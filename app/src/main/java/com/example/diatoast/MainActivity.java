@@ -64,7 +64,17 @@ public class MainActivity extends AppCompatActivity {
                 build.setPositiveButton("Download", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        finish();
+                        LayoutInflater inflator= getLayoutInflater();
+                        View layout = inflator.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.my_toast_viewgroup) );
+
+                        TextView text = layout.findViewById(R.id.textView);
+                        text.setText("Customized Toast");
+
+                        Toast toast = new Toast(MainActivity.this);
+                        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 350);
+                        toast.setDuration(Toast.LENGTH_LONG);
+                        toast.setView(layout);
+                        toast.show();
                     }
 
                 });
