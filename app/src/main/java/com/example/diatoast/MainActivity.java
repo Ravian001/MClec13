@@ -1,5 +1,6 @@
 package com.example.diatoast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
@@ -43,6 +44,39 @@ public class MainActivity extends AppCompatActivity {
                 toast.setDuration(Toast.LENGTH_LONG);
                 toast.setView(layout);
                 toast.show();
+
+            }
+
+
+
+        });
+
+
+
+        buttonAlert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder build = new AlertDialog.Builder(MainActivity.this);
+                build.setMessage("Virus detected on your phone");
+                build.setTitle("Virus!");
+                build.setCancelable(true);
+                build.setPositiveButton("Download", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+
+                });
+
+                build.setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    { dialog.cancel(); }
+                });
+                AlertDialog alertDialog = build.create();
+                alertDialog.show();
+
 
             }
         });
